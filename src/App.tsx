@@ -5,22 +5,21 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ProductPage from './pages/ProductPage';
 
-import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import theme from './styles/themes/theme';
-
 import PrivateRoute from './components/auth/PrivateRoute';
 import { AuthProvider } from './context/AuthContext';
+
 import InventoryControlForm from './components/inventory/InventoryControlForm';
 import SalesHistory from './components/sales/SalesHistory';
 import Pos from './components/sales/Pos';
 import CategoryPage from './pages/CategoryPage';
 import SalesReportsPage from './pages/SalesReportsPage';
-
+import SettingsPage from './pages/SettingsPage';
+import { ThemeProviderWrapper } from './context/ThemeContext'; // Importa el proveedor del contexto de tema
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProviderWrapper> {/* Usa ThemeContextProvider, no ThemeContext */}
       <CssBaseline />
       <AuthProvider>
         <Router>
@@ -75,7 +74,7 @@ const App: React.FC = () => {
                 </PrivateRoute>
               }
             />
-           <Route
+            <Route
               path="/sales-reports"
               element={
                 <PrivateRoute>
@@ -83,10 +82,18 @@ const App: React.FC = () => {
                 </PrivateRoute>
               }
             />
+            <Route
+              path="/settings"
+              element={
+                <PrivateRoute>
+                  <SettingsPage />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </Router>
       </AuthProvider>
-    </ThemeProvider>
+    </ThemeProviderWrapper>
   );
 };
 

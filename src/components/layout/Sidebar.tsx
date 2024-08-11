@@ -1,6 +1,6 @@
 import React from 'react';
 import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import { Home, ListAlt, Assessment, PointOfSale, History, BarChart } from '@mui/icons-material'; 
+import { Home, ListAlt, Assessment, PointOfSale, History, BarChart, Settings, Palette } from '@mui/icons-material'; 
 import { Link } from 'react-router-dom';
 
 const Sidebar: React.FC = () => {
@@ -37,6 +37,14 @@ const Sidebar: React.FC = () => {
         <ListItem button component={Link} to="/sales-reports">
           <ListItemIcon><BarChart /></ListItemIcon>
           <ListItemText primary="Reportes de Ventas" />
+        </ListItem>
+        <ListItem button component={Link} to="/settings">
+          <ListItemIcon><Settings /></ListItemIcon>
+          <ListItemText primary="Configuración" />
+        </ListItem>
+        <ListItem button component={Link} to="/settings">
+          <ListItemIcon><Palette /></ListItemIcon>
+          <ListItemText primary="Personalización de Temas" />
         </ListItem>
       </List>
     </Drawer>
