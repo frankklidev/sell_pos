@@ -15,6 +15,7 @@ import InventoryControlForm from './components/inventory/InventoryControlForm';
 import SalesHistory from './components/sales/SalesHistory';
 import Pos from './components/sales/Pos';
 import CategoryPage from './pages/CategoryPage';
+import SalesReportsPage from './pages/SalesReportsPage';
 
 
 const App: React.FC = () => {
@@ -74,7 +75,14 @@ const App: React.FC = () => {
                 </PrivateRoute>
               }
             />
-            {/* Agrega más rutas según necesites */}
+           <Route
+              path="/sales-reports"
+              element={
+                <PrivateRoute>
+                  <SalesReportsPage />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </Router>
       </AuthProvider>
